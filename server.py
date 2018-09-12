@@ -7,6 +7,8 @@ from jinja2 import StrictUndefined
 #Initialize Flask app
 app = Flask(__name__)
 
+app.secret_key = "SEEECREEEET"
+
 #Raise an error if there's an undefined variable in Jinja
 app.jinja_env.undefined = StrictUndefined
 
@@ -16,8 +18,6 @@ def index():
     return render_template("index.html")
 
 if __name__ == "__main__":
-
-    connect_to_db(app)
 
     # Use the DebugToolbar
     app.debug = True

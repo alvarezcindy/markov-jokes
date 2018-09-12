@@ -1,0 +1,14 @@
+body {
+  background-color: #E8E8E8;
+}
+
+.joke-box {
+  background-color: white;
+  border-radius: 10px;
+  margin: 200px auto;
+  display: flex;
+}
+
+.blockquote {
+  margin: 40px;
+}

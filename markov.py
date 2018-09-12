@@ -40,7 +40,28 @@ def make_chains(jokes):
     return chains
 
 
-# def make_joke(chains):
+def make_joke(chains):
+    """Return text from chains."""
+
+    key = choice(list(chains.keys()))
+    words = list(key)
+
+    while key in chains:
+        key_string = len(str(words))
+        if key_string >= 200:
+            break
+        new = choice(chains[key])
+        words.append(new)
+        key = key[1:] + (new,)
+
+    for i in reversed(range(len(words))):
+        if words[i][-1] in '!.-"':
+            words = words[:i+1]
+            break
+
+    words[0] = words[0].capitalize()
+
+    return " ".join(words)
 
 # Get jokes from icanhazdadjoke API
 jokes = get_jokes()
