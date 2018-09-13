@@ -1,5 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
 body {
-  background-color: #E8E8E8;
+  font-family: "Montserrat", sans-serif;
+  background-color: #3AA4B9;
+}
+
+p {
+  color: #3AA4B9;
 }
 
 .joke-box {
@@ -14,6 +21,12 @@ body {
 }
 
 .btn {
+  border-color: #E8E8E8;
+  background-color: white;
+  color: black;
+}
+
+.btn:hover {
   background-color: #E8E8E8;
   border-color: #E8E8E8;
   color: black;

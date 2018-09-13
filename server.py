@@ -21,6 +21,12 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def index():
     """Homepage."""
+    joke = generate_markov_joke()
+
+    return render_template("index.html", joke=joke)
+
+@app.route('/generate-joke.json')
+def generate_markov_joke():
     # Check if jokes from API are cached
     jokes = get_dad_jokes()
 
@@ -30,10 +36,10 @@ def index():
     # Generate new dad joke
     joke = make_joke(chains)
 
-    # Cache generated markov jokes
+    # Cache generated markov joke
     cache_markov_jokes(joke)
 
-    return render_template("index.html", joke=joke)
+    return joke
 
 def get_dad_jokes():
     jokes = cache.get('dad-jokes')
@@ -47,7 +53,8 @@ def cache_markov_jokes(joke):
     jokes = cache.get('markov-jokes')
     if jokes is None:
         cache.set('markov-jokes', [joke])
-    jokes.append(joke)
+    else:
+        jokes.append(joke)
     return
 
 
