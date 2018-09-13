@@ -1,4 +1,5 @@
 """Generate Markov chains from jokes."""
+
 from api import get_jokes
 from random import choice
 
@@ -49,6 +50,7 @@ def make_joke(chains):
         words.append(new)
         key = key[1:] + (new,)
 
+    # Ends the markov chain on a punctuation.
     for i in reversed(range(len(words))):
         if words[i][-1] in '!.-"':
             words = words[:i+1]
