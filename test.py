@@ -1,3 +1,5 @@
+"""Tests for Markov Jokes App."""
+
 import server
 import unittest
 
