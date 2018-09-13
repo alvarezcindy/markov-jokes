@@ -7,7 +7,7 @@ def make_chains(jokes):
     """
     Takes in jokes as a text string; returns a dictionary of Markov chains.
     Each bigram in the text input is a key and the value is a list of the word(s)
-    that follow the bigram in the full text.
+    that follow the bigram in the text input.
     
     >>> jokes = make_chains("knock knock joke joke")
 

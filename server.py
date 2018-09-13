@@ -45,7 +45,7 @@ def generate_markov_joke():
 
 def get_dad_jokes():
     """
-    Checks if icanhasdadjoke jokes are stored in a cache. Otherwise, calls API.
+    Checks if icanhazdadjoke jokes are stored in a cache. Otherwise, calls API.
     Returns API's jokes.
     """
     jokes = cache.get('dad-jokes')

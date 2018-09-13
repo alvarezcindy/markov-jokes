@@ -12,7 +12,7 @@ __APIs:__ icanhazdadjoke API
 ## Features
 ------
 
-Users can read generated jokes and click a button to request another one:
+Users can read generated jokes and click a button to request a new one:
 ![ScreenShot](/static/img/readme_img1.jpg)
 
 ## Installation
