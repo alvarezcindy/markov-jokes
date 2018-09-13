@@ -72,7 +72,7 @@ if __name__ == "__main__":
     if testmod().failed == 0:
 
     # Use the DebugToolbar
-        app.debug = True
+        app.debug = False
         DebugToolbarExtension(app)
 
         app.run(host="0.0.0.0")

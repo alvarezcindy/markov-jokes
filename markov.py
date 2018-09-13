@@ -36,7 +36,7 @@ def make_chains(jokes):
 
 
 def make_joke(chains):
-    """Return text from chains."""
+    """Return text/new joke from chains."""
 
     key = choice(list(chains.keys()))
     words = list(key)
