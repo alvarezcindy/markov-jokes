@@ -5,9 +5,9 @@ Markov Dad Jokes is a Markov chain generator that uses existing dad jokes to gen
 ## Tech Stack
 ------
 
-__Frontend:__ Javascript, jQuery, Ajax, Jinja2, Bootstrap, HTML, CSS
-__Backend:__ Python, Flask
-__APIs:__ icanhazdadjoke API
+__Frontend:__ Javascript, jQuery, Ajax, Jinja2, Bootstrap, HTML, CSS </br>
+__Backend:__ Python, Flask </br>
+__APIs:__ icanhazdadjoke API </br>
 
 ## Features
 ------
