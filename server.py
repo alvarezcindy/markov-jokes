@@ -2,7 +2,13 @@
 
 from flask import Flask, render_template, request, flash, redirect, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
+from api import get_jokes
+from markov import make_chains, make_joke
 from jinja2 import StrictUndefined
+
+from werkzeug.contrib.cache import SimpleCache
+
+cache = SimpleCache()
 
 #Initialize Flask app
 app = Flask(__name__)
@@ -15,7 +21,26 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def index():
     """Homepage."""
-    return render_template("index.html")
+    # check if jokes from API are cached
+    jokes = get_cached_jokes()
+
+    # Make Markov chains
+    chains = make_chains(jokes)
+
+    # Generate new dad joke
+    joke = make_joke(chains)
+
+    return render_template("index.html", joke=joke)
+
+def get_cached_jokes():
+    jokes = cache.get('dad-jokes')
+    if jokes is None:
+        #get jokes from icanhazdadjoke API and cache them
+        jokes = get_jokes()
+        cache.set('dad-jokes', jokes)
+    return jokes
+
+
 
 if __name__ == "__main__":
 

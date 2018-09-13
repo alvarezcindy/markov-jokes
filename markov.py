@@ -25,12 +25,12 @@ def make_chains(jokes):
     [None]
     """
 
-    words = tuple(jokes.split())
+    words = jokes.split()
 
     chains = {}
 
     for i in range(len(words)-2):
-        bigram = words[i:i+2]
+        bigram = tuple(words[i:i+2])
 
         if bigram not in chains:
             chains[bigram] = []
@@ -62,12 +62,3 @@ def make_joke(chains):
     words[0] = words[0].capitalize()
 
     return " ".join(words)
-
-# Get jokes from icanhazdadjoke API
-jokes = get_jokes()
-
-# Make Markov chains
-chains = make_chains(jokes)
-
-# Generate new dad jokes
-dad_jokes = make_joke(chains)

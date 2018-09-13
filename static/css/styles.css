@@ -12,3 +12,9 @@ body {
 .blockquote {
   margin: 40px;
 }
+
+.btn {
+  background-color: #E8E8E8;
+  border-color: #E8E8E8;
+  color: black;
+}
