@@ -56,7 +56,20 @@ def get_dad_jokes():
     return jokes
 
 def cache_markov_jokes(joke):
-    """ Caches generated Markov jokes. """
+    """ 
+    Caches generated Markov jokes. 
+
+    >>> haha = 'Joke1'
+
+    >>> cache.set('jokes', [haha])
+    True
+
+    >>> markov_jokes = cache.get('jokes')
+
+    >>> markov_jokes
+    ['Joke1']
+
+    """
     jokes = cache.get('markov-jokes')
     if jokes is None:
         cache.set('markov-jokes', [joke])
