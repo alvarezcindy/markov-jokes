@@ -3,6 +3,8 @@
 import requests, json
 
 def get_jokes():
+    """
+    """
 
     dad_jokes = ''
 
@@ -10,7 +12,7 @@ def get_jokes():
 
     headers = {'User-Agent': 'https://github.com/alvarezcindy', 
                'Accept': 'text/plain'}
-
+ 
     for n in range(1,5):
         params = {'current_page': n,
                   'limit': '30'}

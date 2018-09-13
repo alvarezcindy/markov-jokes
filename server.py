@@ -1,6 +1,6 @@
 """Dad Joke Generator"""
 
-from flask import Flask, render_template, request, flash, redirect, jsonify
+from flask import Flask, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 from api import get_jokes
 from markov import make_chains, make_joke
@@ -27,6 +27,8 @@ def index():
 
 @app.route('/generate-joke.json')
 def generate_markov_joke():
+    """Returns a markov chain/new joke."""
+
     # Check if jokes from API are cached
     jokes = get_dad_jokes()
 
@@ -42,6 +44,10 @@ def generate_markov_joke():
     return joke
 
 def get_dad_jokes():
+    """
+    Checks if icanhasdadjoke jokes are stored in a cache. Otherwise, calls API.
+    Returns API's jokes.
+    """
     jokes = cache.get('dad-jokes')
     if jokes is None:
         #get jokes from icanhazdadjoke API and cache them
@@ -50,6 +56,7 @@ def get_dad_jokes():
     return jokes
 
 def cache_markov_jokes(joke):
+    """ Caches generated Markov jokes. """
     jokes = cache.get('markov-jokes')
     if jokes is None:
         cache.set('markov-jokes', [joke])
