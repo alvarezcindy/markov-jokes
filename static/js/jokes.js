@@ -1,6 +1,7 @@
 "use strict";
 
 function replaceJoke(joke) {
+    joke = joke.replace('â', "'")
     $('#joke').html(joke);
 }
 
