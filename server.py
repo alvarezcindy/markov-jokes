@@ -21,8 +21,8 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def index():
     """Homepage."""
-    # check if jokes from API are cached
-    jokes = get_cached_jokes()
+    # Check if jokes from API are cached
+    jokes = get_dad_jokes()
 
     # Make Markov chains
     chains = make_chains(jokes)
@@ -30,9 +30,12 @@ def index():
     # Generate new dad joke
     joke = make_joke(chains)
 
+    # Cache generated markov jokes
+    cache_markov_jokes(joke)
+
     return render_template("index.html", joke=joke)
 
-def get_cached_jokes():
+def get_dad_jokes():
     jokes = cache.get('dad-jokes')
     if jokes is None:
         #get jokes from icanhazdadjoke API and cache them
@@ -40,6 +43,12 @@ def get_cached_jokes():
         cache.set('dad-jokes', jokes)
     return jokes
 
+def cache_markov_jokes(joke):
+    jokes = cache.get('markov-jokes')
+    if jokes is None:
+        cache.set('markov-jokes', [joke])
+    jokes.append(joke)
+    return
 
 
 if __name__ == "__main__":
