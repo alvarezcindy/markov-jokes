@@ -1,11 +1,6 @@
 """Generate Markov chains from jokes."""
 from api import get_jokes
-from pprint import pprint
 from random import choice
-
-# what happens if you pass in an empty string?
-# what happens if you pass in one word?
-
 
 def make_chains(jokes):
     """
@@ -13,16 +8,16 @@ def make_chains(jokes):
     Each bigram in the text input is a key and the value is a list of the word(s)
     that follow the bigram in the full text.
     
-    >>> jokes = make_chains("knock knock joke")
+    >>> jokes = make_chains("knock knock joke joke")
 
     >>> sorted(jokes.keys())
-    [('knock', 'knock'), ('knock', 'joke')]
+    [('knock', 'joke'), ('knock', 'knock')]
 
     >>> jokes[('knock', 'knock')]
     ['joke']
       
     >>> jokes[('knock','joke')]
-    [None]
+    ['joke']
     """
 
     words = jokes.split()

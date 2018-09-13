@@ -60,8 +60,12 @@ def cache_markov_jokes(joke):
 
 if __name__ == "__main__":
 
-    # Use the DebugToolbar
-    app.debug = True
-    DebugToolbarExtension(app)
+    # Only start server if all doctests pass
+    from doctest import testmod
+    if testmod().failed == 0:
 
-    app.run(host="0.0.0.0")
+    # Use the DebugToolbar
+        app.debug = True
+        DebugToolbarExtension(app)
+
+        app.run(host="0.0.0.0")
